@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="ISO-8859-1">
+<link rel="stylesheet" type="text/css" href="/bootstrap/css/bootstrap.min.css">
+<title>Student Management System</title>
+</head>
+<body>
+<div align="center" class="container">
+<form method="post" th:action="@{/admin/add_result}" th:object="${result}">
+
+	<h3>Mark Result </h3>
+	<div >
+	    <label>Class ID</label>
+	    <input type="number" placeholder="Enter Class Id"
+	     th:field="*{classes}" required  maxlength="38">
+	  </div>
+	  <div >
+	    <label >Student ID</label>
+	    <input type="number" id="exampleInputClassId" placeholder="Enter Student Id"
+	     th:field="*{student}" required  maxlength="38">
+	  </div>
+	  
+	  <div>
+	  	<label>English</label>
+	   <!--  <label>Marks</label> -->
+	    <input type="number"  placeholder="Enter Marks"
+	     th:field="*{marks1}" required  maxlength="38">
+	  </div>
+	  <div>
+	  	<label>Hindi</label>
+	    <input type="number"  placeholder="Enter Marks"
+	     th:field="*{marks2}" required  maxlength="38">
+	  </div>
+	  <div>
+
+	    <label >Science</label>
+	    <input type="number"  placeholder="Enter Marks"
+	     th:field="*{marks3}" required  maxlength="38">
+	  </div>
+	  <div>
+	
+	    <label>Social Science</label>
+	    <input type="number" placeholder="Enter Marks"
+	     th:field="*{marks4}" required  maxlength="38">
+	  </div>
+	  <div>
+	    <label th:field="*{total_mark}">Total Marks</label>
+	    
+	  </div>
+	  <div>
+	    <label th:field="*{percentage}">Percentage</label>
+	    
+	  </div>
+	  <div>
+	    <label th:field="*{status}">Status</label>
+	    
+	  </div>
+	
+<button type="submit" class="btn btn-primary">Submit</button>
+</form>
+</div>
+</body>
+</html>

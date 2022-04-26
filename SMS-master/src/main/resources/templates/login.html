@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="ISO-8859-1">
+<title>Student Management System</title>
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta/css/bootstrap.min.css" integrity="sha384-/Y6pD6FV/Vv2HJnA6t+vslU6fwYXjCFtcEpHbNJ0lyAFsXTsjBbfaDjzALeQsN6M" crossorigin="anonymous">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.5.0/css/font-awesome.min.css">
+<link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.0.0-beta/css/bootstrap.min.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.5.0/css/font-awesome.min.css">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto">
+<link rel="stylesheet" type="text/css" href="/login2.css">
+
+<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/popper.js@1.12.9/dist/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+
+</head>
+<body>
+	<nav class="navbar navbar-expand-md navbar-dark p-3" style="background-color:#262626">
+		<a class="navbar-brand fs-8 h2 font-weight-bold" href="#">STUDENT MANAGEMENT
+			SYSTEM</a>
+		<button class="navbar-toggler" type="button" data-bs-toggle="collapse"
+			data-bs-target="#TopNavbarItems" aria-controls="TopNavbarItem"
+			aria-expanded="false" aria-label="Toggle navigation">
+			<span class="navbar-toggler-icon"></span>
+		</button>
+		<div class="collapse navbar-collapse justify-content-end" id="TopNavbarItems">
+
+			<ul class="navbar-nav ms-auto justify-content-evenly">
+				<li class="nav-item me-5 pl-5"><a class="nav-link" th:href="@{/home}">Home</a>
+				</li>
+
+				<li class="nav-item dropdown pl-5">
+					<a class="nav-link dropdown-toggle" href="#" id="Login" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"> Login </a>
+					<ul class="dropdown-menu dropdown-menu-dark" aria-labelledby="Login">
+                    	<li><a class="dropdown-item" href="login">Admin</a></li>
+                        <li><a class="dropdown-item" href="studentlogin">Student</a></li>
+                    </ul>
+				</li>
+
+			</ul>
+		</div>
+	</nav>
+	
+		<div class="container">
+			<div class="row" id="login-row">
+				<div class="col-lg-3 col-md-2"></div>
+				<div class="col-lg-6 col-md-8 login-box" id="login-column">
+					<div class="col-lg-12 login-key" id="login-box">
+						<i class="fa fa-key" aria-hidden="true"></i>
+					</div>
+					<div class="col-lg-12 login-title">ADMIN LOGIN</div>
+
+					<div class="col-lg-12 login-form">
+						<div class="col-lg-12 login-form">
+							<form id="login-form" th:action="@{/login}" action="#"
+								method="post">
+								<div th:if="${param.logout}" class="alert alert-success">
+									You have been logged out.</div>
+								<div class="form-group">
+									<label for="username" class="form-control-label">USERNAME</label>
+									<input type="text" name="username" id="username"
+										placeholder="Admin username" class="form-control" required>
+								</div>
+								<div class="form-group">
+									<label for="password" class="form-control-label">PASSWORD</label>
+									<input type="password" name="password" id="password"
+										class="form-control" placeholder="Admin password" required>
+								</div>
+
+								<div class="col-lg-12 loginbttm">
+									<div class="col-lg-6 login-btm login-text">
+										<div th:if="${param.error}" class="alert text-danger"
+											style="font-family: SFProText-Regular, Helvetica, Arial, sans-serif;width: 500px; height: 20px;">
+											Invalid username or password.</div>
+									</div>
+									<div class="col-lg-6 login-btm login-button">
+										<input type="submit" name="submit"
+											class="btn btn-outline-primary" value="Login">
+									</div>
+								</div>
+								<div class="form-group">
+									<a th:href="@{forgotPassword}" class="btnForgetPwd">Forget
+										Password?</a>
+								</div>
+							</form>
+						</div>
+					</div>
+					<div class="col-lg-3 col-md-2"></div>
+				</div>
+			</div>
+		</div>
+</body>
+</html>

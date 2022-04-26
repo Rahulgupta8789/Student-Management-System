@@ -1,0 +1,236 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="ISO-8859-1">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+
+<link
+	href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css"
+	rel="stylesheet"
+	integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3"
+	crossorigin="anonymous">
+<script
+	src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"
+	integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p"
+	crossorigin="anonymous"></script>
+
+<title>Student Management System</title>
+</head>
+<body>
+	<nav class="navbar navbar-expand-md navbar-dark bg-dark p-3">
+		<a class="navbar-brand fs-8 h2 " href="#">STUDENT MANAGEMENT SYSTEM</a>
+		<button class="navbar-toggler" type="button" data-bs-toggle="collapse"
+			data-bs-target="#TopNavbarItems" aria-controls="TopNavbarItem"
+			aria-expanded="false" aria-label="Toggle navigation">
+			<span class="navbar-toggler-icon"></span>
+		</button>
+		<div class="collapse navbar-collapse " id="TopNavbarItems">
+
+			<ul class="navbar-nav ms-auto justify-content-evenly">
+				 <li class="nav-item me-5">
+          <a class="nav-link" th:href="@{/admin/home}">Home</a>
+        </li>
+        
+        <li class="nav-item dropdown">
+          <a class="nav-link" th:href="@{/logout}" id="navbarlogout" role="button">
+              Logout
+          </a>
+      </li>
+
+			</ul>
+		</div>
+	</nav>
+
+
+	<div class="container-fluid bg-light">
+		<div class="row align-items-stretch">
+
+
+			<div class="col">
+				<div
+					class="container border border-secondary border-5 rounded p-5 mt-5 mb-5 w-75"
+					style="background-color: #f9fdc4;">
+					<h3 class="text-uppercase text-success">Student registration
+						form</h3>
+					<hr>
+
+					<!-- The asterisk syntax evaluates expressions on selected objects  -->
+					<form class="d-flex flex-column" method="post"
+						th:action="@{/admin/register_student}" th:object="${student}">
+
+						<div class="row">
+							<div class="col-md-6 mb-4">
+								<div class="form-group align-self-start">
+									<label for="exampleInputFirstName" class="fw-bold">First
+										Name</label> <input type="text" class="form-control"
+										id="exampleInputFirstName" placeholder="Enter first name"
+										th:field="*{fName}" required maxlength="20">
+								</div>
+							</div>
+							<div class="col-md-6 mb-4">
+								<div class="form-group align-self-start">
+									<label for="exampleInputLastName" class="fw-bold">Last
+										Name</label> <input type="text" class="form-control"
+										id="exampleInputLastName" placeholder="Enter last name"
+										th:field="*{lName}" required maxlength="38">
+								</div>
+							</div>
+						</div>
+
+						<div class="row">
+							<div class="col-md-3 mb-4">
+								<div class="form-group align-self-start">
+									<label for="exampleDOB" class="fw-bold">Date of Birth</label> <input
+										type="date" class="form-control" id="exampleDOB"
+										th:field="*{DOB}" required>
+								</div>
+							</div>
+							<div class="col-md-3 mb-4"></div>
+							<div class="col-md-6 mb-4">
+								<div class="form-group">
+									<label for="exampleInputAddress" class="fw-bold">Address</label><br>
+									<textarea rows="4" cols="50" th:field="*{address}"></textarea>
+								</div>
+							</div>
+							
+						</div>
+
+						<div class="row">
+							<div class="col-md-6 mb-4">
+								<div class="form-group align-self-start">
+									<label for="exampleInputEmail1" class="fw-bold">Email
+										address</label> <input type="email" class="form-control"
+										id="exampleInputEmail1" aria-describedby="emailHelp"
+										placeholder="Enter email" th:field="*{email}" required>
+									<small id="emailHelp" class="form-text text-muted">We'll
+										never share your email with anyone else.</small>
+								</div>
+								<div class="col-md-6 mb-4">
+								<div class="form-group align-self-start">
+									<label  class="fw-bold">Contact Number</label>
+										<input type="text" class="form-control"
+										id="exampleInputLastName" placeholder="Enter Contact Number"
+										th:field="*{contactNo}" required maxlength="38">
+								</div>
+							</div>
+							</div>
+
+							<div class="col-md-6 mb-4">
+								<div class="form-group align-self-start">
+									<label for="exampleInputPassword1" class="fw-bold">Password</label>
+									<input type="password" class="form-control"
+										id="exampleInputPassword1" placeholder="Password"
+										th:field="*{password}" required min="4" max="16">
+								</div>
+							</div>
+						</div>
+
+						<div class="row">
+							<div class="col-md-6 mb-4">
+								<div class="form-group align-self-start">
+									<label for="exampleInputFather" class="fw-bold">Father's
+										Name</label> <input type="text" class="form-control"
+										id="exampleInputFather" placeholder="Enter Father's Name"
+										th:field="*{father}" required maxlength="38">
+								</div>
+							</div>
+							<div class="col-md-6 mb-4">
+								<div class="form-group align-self-start">
+									<label for="exampleInputMother" class="fw-bold">Mother's
+										Name</label> <input type="text" class="form-control"
+										id="exampleInputFather" placeholder="Enter Mother's Name"
+										th:field="*{mother}" required maxlength="38">
+								</div>
+							</div>
+						</div>
+
+
+						<div class="row">
+							<div class="col-md-6 mb-4">
+								<div class="form-group align-self-start">
+
+									<label for="exampleInputMother" class="fw-bold"
+										style="width: 3rem;">Class</label> <select
+										class="btn btn-light" id="exampleInputclass"
+										th:field="*{classes}" required>
+										<option value="" hidden="true">Select Class</option>
+										<option th:value="1">Class 1</option>
+										<option th:value="2">Class 2</option>
+										<option th:value="3">Class 3</option>
+										<option th:value="4">Class 4</option>
+										<option th:value="5">Class 5</option>
+										<option th:value="6">Class 6</option>
+										<option th:value="7">Class 7</option>
+										<option th:value="8">Class 8</option>
+										<option th:value="9">Class 9</option>
+										<option th:value="10">Class 10</option>
+									</select>
+								</div>
+							</div>
+
+							<div class="col-md-6 mb-4">
+								<div class="form-group align-self-start">
+									<label for="exampleInputGender" class="fw-bold"
+										style="width: 5rem;">Gender</label>
+
+									<div class="form-check form-check-inline">
+										<input class="form-check-input" type="radio" th:field="*{gender}"
+											name="inlineRadioOptions" id="inlineRadio1" th:value="male" required>
+										<label class="form-check-label" for="inlineRadio1" >Male</label>
+									</div>
+									<div class="form-check form-check-inline">
+										<input class="form-check-input" type="radio" th:field="*{gender}"
+											name="inlineRadioOptions" id="inlineRadio2" th:value="female" required>
+										<label class="form-check-label" for="inlineRadio2">Female</label>
+									</div>
+								</div>
+							</div>
+						</div>
+
+						<!-- <div class="form-group">
+	    <label for="exampleInputmobile">Mobile</label>
+	    <input type="number" class="form-control" id="exampleInputmobile" placeholder="Enter Mobile"
+	     th:field="*{mobile}" required >
+	  </div>
+	   -->
+						<div class="row">
+							<div class="col-md-6 mb-4">
+								<div class="form-group align-self-start">
+									<label for="exampleInputDOA" class="fw-bold">Date of
+										Admission</label> <input type="date" class="form-control"
+										style="width: 10rem;" id="exampleInputDOA"
+										th:field="*{date_of_Submission}" required>
+								</div>
+							</div>
+
+							<div class="col-md-6 mb-4">
+								<div class="form-group align-self-start">
+									<label for="exampleInputfeestatus" class="fw-bold">Fee
+										Status</label>
+									<div class="form-check">
+										<input class="form-check-input" type="radio" th:value="Paid"  th:field="*{fee_status}" name="flexRadioDefault" id="flexRadioDefault3" th:checked>
+											
+										<label > Paid </label>
+											
+									</div>
+									<div class="form-check">
+										<input class="form-check-input" type="radio" th:value="Unpaid" th:field="*{fee_status}" name="flexRadioDefault" id="flexRadioDefault4"> 
+											
+										<label>Unpaid</label>
+									</div>
+								</div>
+							</div>
+						</div>
+
+						<div class="text-center">
+							<button type="submit" class="btn btn-primary"
+								style="width: 10rem;">Submit</button>
+						</div>
+
+					</form>
+				</div>
+			</div>
+		</div>
+	</div>
+</body>
+</html>
